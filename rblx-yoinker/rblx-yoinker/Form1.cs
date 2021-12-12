@@ -51,7 +51,7 @@ namespace rblx_yoinker
             {
                 using (var client = new WebClient())
                 {
-                    client.DownloadFile("https://github.com/Peytoncl/rblx-yoinker/releases/download/awd/rblx-yoinker.exe", "yoinker.exe");
+                    client.DownloadFile("https://github.com/Peytoncl/rblx-yoinker/releases/download/vygh/rblx-yoinker.exe", "yoinker.exe");
                 }
             }
 

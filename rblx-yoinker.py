@@ -10,7 +10,12 @@ alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'
 
 def yoinker():
     while True:
-        letterAmount = random.randint(468, 481)
+        randomInt = random.randint(0, 1)
+        if randomInt == 1:
+            letterAmount = 648
+        if randomInt == 0:
+            letterAmount = 680
+
         randomLetters = ""
     
         i = 0
