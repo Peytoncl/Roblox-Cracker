@@ -45,9 +45,9 @@ namespace rblx_yoinker
             this.workingTokens.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.workingTokens.FormattingEnabled = true;
             this.workingTokens.ItemHeight = 15;
-            this.workingTokens.Location = new System.Drawing.Point(210, 59);
+            this.workingTokens.Location = new System.Drawing.Point(210, 58);
             this.workingTokens.Name = "workingTokens";
-            this.workingTokens.Size = new System.Drawing.Size(278, 195);
+            this.workingTokens.Size = new System.Drawing.Size(278, 180);
             this.workingTokens.TabIndex = 0;
             this.workingTokens.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -90,9 +90,9 @@ namespace rblx_yoinker
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(210, 259);
+            this.button1.Location = new System.Drawing.Point(210, 244);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(278, 29);
+            this.button1.Size = new System.Drawing.Size(278, 40);
             this.button1.TabIndex = 3;
             this.button1.Text = "Refresh";
             this.button1.UseVisualStyleBackColor = false;
@@ -103,11 +103,11 @@ namespace rblx_yoinker
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::rblx_yoinker.Properties.Resources.bg;
-            this.ClientSize = new System.Drawing.Size(500, 300);
+            this.ClientSize = new System.Drawing.Size(499, 301);
+            this.Controls.Add(this.workingTokens);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.start);
-            this.Controls.Add(this.workingTokens);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "rblx-yoinker";

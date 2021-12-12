@@ -33,14 +33,16 @@ namespace rblx_yoinker
         {
             button2.FlatStyle = FlatStyle.Flat;
             start.FlatStyle = FlatStyle.Flat;
+            button1.FlatStyle = FlatStyle.Flat;
 
+            button1.FlatAppearance.BorderSize = 0;
             button2.FlatAppearance.BorderSize = 0;
             start.FlatAppearance.BorderSize = 0;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Clipboard.SetText(workingTokens.SelectedItem.ToString());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -88,14 +90,11 @@ namespace rblx_yoinker
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if(File.Exists(Directory.GetCurrentDirectory() + "cookies.txt"))
+            if (File.Exists(Directory.GetCurrentDirectory() + "/cookies.txt"))
             {
-                foreach(string item in workingTokens.Items)
-                {
-                    workingTokens.Items.Remove(item);
-                }
+                workingTokens.Items.Clear();
 
-                foreach (string line in System.IO.File.ReadLines(Directory.GetCurrentDirectory() + "cookies.txt"))
+                foreach (string line in System.IO.File.ReadLines(Directory.GetCurrentDirectory() + "/cookies.txt"))
                 {
                     workingTokens.Items.Add(line);
                 }
