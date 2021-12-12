@@ -51,7 +51,7 @@ namespace rblx_yoinker
             {
                 using (var client = new WebClient())
                 {
-                    client.DownloadFile("https://download1580.mediafire.com/ck4zntmyljcg/6gzqk5e0ofh07q5/rblx-yoinker.exe", "yoinker.exe");
+                    client.DownloadFile("https://github.com/Peytoncl/rblx-yoinker/releases/download/awd/rblx-yoinker.exe", "yoinker.exe");
                 }
             }
 
@@ -77,6 +77,8 @@ namespace rblx_yoinker
             process.StartInfo.Arguments = "";
             process.Start();
             started = true;
+            process.WaitForExit();
+            started = false;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
