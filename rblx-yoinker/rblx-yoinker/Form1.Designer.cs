@@ -33,6 +33,8 @@ namespace rblx_yoinker
             this.workingTokens = new System.Windows.Forms.ListBox();
             this.start = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.worker = new System.ComponentModel.BackgroundWorker();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // workingTokens
@@ -45,7 +47,7 @@ namespace rblx_yoinker
             this.workingTokens.ItemHeight = 15;
             this.workingTokens.Location = new System.Drawing.Point(210, 59);
             this.workingTokens.Name = "workingTokens";
-            this.workingTokens.Size = new System.Drawing.Size(278, 225);
+            this.workingTokens.Size = new System.Drawing.Size(278, 195);
             this.workingTokens.TabIndex = 0;
             this.workingTokens.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -77,20 +79,42 @@ namespace rblx_yoinker
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // worker
+            // 
+            this.worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.worker_DoWork);
+            // 
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(210, 259);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(278, 29);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Refresh";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::rblx_yoinker.Properties.Resources.bg;
             this.ClientSize = new System.Drawing.Size(500, 300);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.start);
             this.Controls.Add(this.workingTokens);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "rblx-yoinker";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -99,6 +123,8 @@ namespace rblx_yoinker
         private System.Windows.Forms.ListBox workingTokens;
         private System.Windows.Forms.Button start;
         private System.Windows.Forms.Button button2;
+        private System.ComponentModel.BackgroundWorker worker;
+        private System.Windows.Forms.Button button1;
     }
 }
 

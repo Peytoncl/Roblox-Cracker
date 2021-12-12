@@ -11,13 +11,18 @@ using System.Net;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace rblx_yoinker
 {
     public partial class Form1 : Form
     {
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 
-        public Process process;
+        private Process process;
+
+        private bool started = false;
 
         public Form1()
         {
@@ -38,35 +43,62 @@ namespace rblx_yoinker
 
         }
 
-        private void runYoinker()
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(!File.Exists(Directory.GetCurrentDirectory() + "yoinker.exe"))
+            {
+                using (var client = new WebClient())
+                {
+                    client.DownloadFile("https://download1580.mediafire.com/ck4zntmyljcg/6gzqk5e0ofh07q5/rblx-yoinker.exe", "yoinker.exe");
+                }
+            }
+
+            worker.RunWorkerAsync();
+            worker.WorkerSupportsCancellation = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(started)
+            {
+                worker.CancelAsync();
+                process.CloseMainWindow();
+                started = false;
+            }
+        }
+
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             process = new Process();
             process.StartInfo = new ProcessStartInfo("yoinker.exe");
             process.StartInfo.WorkingDirectory = Directory.GetCurrentDirectory();
             process.StartInfo.Arguments = "";
             process.Start();
+            started = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            using (var client = new WebClient())
+            if(started)
             {
-                client.DownloadFile("https://download1580.mediafire.com/ck4zntmyljcg/6gzqk5e0ofh07q5/rblx-yoinker.exe", "yoinker.exe");
-            }
-
-            runRunYoinker();
-        }
-
-        private async void runRunYoinker()
-        {
-            await Task.Run(() => runYoinker());
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (!process.HasExited)
-            {
+                worker.CancelAsync();
                 process.CloseMainWindow();
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if(File.Exists(Directory.GetCurrentDirectory() + "cookies.txt"))
+            {
+                foreach(string item in workingTokens.Items)
+                {
+                    workingTokens.Items.Remove(item);
+                }
+
+                foreach (string line in System.IO.File.ReadLines(Directory.GetCurrentDirectory() + "cookies.txt"))
+                {
+                    workingTokens.Items.Add(line);
+                }
             }
         }
     }
